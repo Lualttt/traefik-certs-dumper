@@ -54,7 +54,7 @@ func Dump(data map[string]*traefikv2.StoredData, baseConfig *dumper.BaseConfig) 
 
 		privateKeyPem := extractPEMPrivateKey(store.Account)
 
-		err := os.WriteFile(filepath.Join(baseConfig.DumpPath, keysSubDir, "letsencrypt"+baseConfig.KeyInfo.Ext), privateKeyPem, 0o600)
+		err := os.WriteFile(filepath.Join(baseConfig.DumpPath, keysSubDir, "letsencrypt"+baseConfig.KeyInfo.Ext), privateKeyPem, 0o644)
 		if err != nil {
 			return fmt.Errorf("failed to write private key: %w", err)
 		}
@@ -84,7 +84,7 @@ func writeKey(dumpPath string, cert traefikv2.Certificate, info dumper.FileInfo,
 		}
 	}
 
-	return os.WriteFile(keyPath, cert.Key, 0o600)
+	return os.WriteFile(keyPath, cert.Key, 0o644)
 }
 
 func extractPEMPrivateKey(account *traefikv2.Account) []byte {

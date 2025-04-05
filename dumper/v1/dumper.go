@@ -52,7 +52,7 @@ func Dump(data *traefikv1.StoredData, baseConfig *dumper.BaseConfig) error {
 	}
 
 	privateKeyPem := extractPEMPrivateKey(data.Account)
-	return os.WriteFile(filepath.Join(baseConfig.DumpPath, keysSubDir, "letsencrypt"+baseConfig.KeyInfo.Ext), privateKeyPem, 0o600)
+	return os.WriteFile(filepath.Join(baseConfig.DumpPath, keysSubDir, "letsencrypt"+baseConfig.KeyInfo.Ext), privateKeyPem, 0o644)
 }
 
 func writeCert(dumpPath string, cert *traefikv1.Certificate, info dumper.FileInfo, domainSubDir bool) error {
@@ -76,7 +76,7 @@ func writeKey(dumpPath string, cert *traefikv1.Certificate, info dumper.FileInfo
 		}
 	}
 
-	return os.WriteFile(keyPath, cert.Key, 0o600)
+	return os.WriteFile(keyPath, cert.Key, 0o644)
 }
 
 func extractPEMPrivateKey(account *traefikv1.Account) []byte {
