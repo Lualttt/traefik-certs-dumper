@@ -9,6 +9,9 @@ If you appreciate this project:
 
 [![Sponsor](https://img.shields.io/badge/Sponsor%20me-%E2%9D%A4%EF%B8%8F-pink)](https://github.com/sponsors/ldez)
 
+## Changes
+* Made key files permissions be 644 instead of 600.
+
 ## Features
 
 - Supported sources:
